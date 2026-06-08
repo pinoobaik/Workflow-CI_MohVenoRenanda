@@ -2,33 +2,30 @@ name: MLflow CI
 
 on:
   push:
-    branches:
-      - main
-
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
-
   train-model:
-
     runs-on: ubuntu-latest
-
     steps:
-
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - name: Setup Miniconda
+        uses: conda-incubator/setup-miniconda@v3
         with:
+          auto-update-conda: true
           python-version: "3.12"
 
       - name: Install Dependencies
+        shell: bash -l {0}
         run: |
           pip install mlflow
           pip install -r MLProject/requirements.txt
 
       - name: Run MLflow Project
+        shell: bash -l {0}
         run: |
           cd MLProject
           mlflow run .
