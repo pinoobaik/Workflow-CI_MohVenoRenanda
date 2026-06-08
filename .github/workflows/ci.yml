@@ -25,13 +25,10 @@ jobs:
 
       - name: Install Dependencies
         run: |
+          pip install mlflow
           pip install -r MLProject/requirements.txt
 
-      - name: Run training
+      - name: Run MLflow Project
         run: |
-          python MLProject/modelling.py
-
-      # - name: Run MLflow Project
-      #   run: |
-      #     cd MLProject
-      #     mlflow run .
+          cd MLProject
+          mlflow run .
