@@ -11,7 +11,7 @@ from sklearn.metrics import accuracy_score
 mlflow.sklearn.autolog()
 
 # load dataset
-df = pd.read_csv("telco_preprocessing.csv")
+df = pd.read_csv("MLProject/telco_preprocessing.csv")
 
 # split fitur dan target
 X = df.drop("Churn", axis=1)
