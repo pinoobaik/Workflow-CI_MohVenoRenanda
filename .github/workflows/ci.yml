@@ -25,12 +25,13 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          pip install mlflow==2.19.0
-          pip install pandas
-          pip install numpy
-          pip install scikit-learn
+          pip install -r requirements.txt
 
-      - name: Run MLflow Project
+      - name: Run training
         run: |
-          cd MLProject
-          mlflow run .
+          python MLProject/modelling.py
+
+      # - name: Run MLflow Project
+      #   run: |
+      #     cd MLProject
+      #     mlflow run .
