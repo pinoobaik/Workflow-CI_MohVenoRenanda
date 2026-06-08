@@ -7,9 +7,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 
-# Set tracking & artifact URI ke local relative (menghindari absolute path)
-mlflow.set_tracking_uri("./mlruns")
-mlflow.set_artifact_uri("./mlruns")
+mlflow.set_tracking_uri("./mlruns")  
 
 mlflow.sklearn.autolog()
 
@@ -30,6 +28,5 @@ with mlflow.start_run():
     print(f"Accuracy: {acc:.4f}")
     mlflow.log_metric("accuracy", acc)
 
-    # Simpan model sebagai file pkl untuk keperluan inference (opsional)
     joblib.dump(model, "model.pkl")
     mlflow.log_artifact("model.pkl")
