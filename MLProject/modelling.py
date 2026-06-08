@@ -45,3 +45,4 @@ with mlflow.start_run():
     joblib.dump(model, "model.pkl")
 
     mlflow.log_artifact("model.pkl")
+    
